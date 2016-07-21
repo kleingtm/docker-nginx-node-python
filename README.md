@@ -1,6 +1,7 @@
 ## Dockerizing Angular 2, Flask, NodeJS, and MongoDB With Docker-Compose and Docker-Machine
 
 **Goal:**
+
 The goal of this repository is to have a quickly sharable, deployable docker setup for Python and Node web services adhering to best-practices. Nginx serves the static content and reverse proxies to Python/Flask and NodeJS/Express web service apis. Since Nginx, Python, and NodeJS are in separate (linked) docker containers, each service has a separate IP from the host docker-machine. Due to this, nginx reverse proxies over specific TCP ports between containers, as opposed to using a unix socket implementation. A benefit of this linked container implementation is that proxies do not go through the docker-machine host.
 
 
