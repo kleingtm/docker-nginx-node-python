@@ -30,6 +30,7 @@
 
     `docker-machine ip`
     
+    
 - Static assets served from Nginx:
     - http://docker-machine-ip/
 - Flask API REST end-point:
