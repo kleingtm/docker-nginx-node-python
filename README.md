@@ -35,7 +35,7 @@
     - http://docker-machine-ip/
 - Flask API REST end-point:
     - http://docker-machine-ip/flask-api/user
-    - http://docker-machine-ip>/flask-api/users
+    - http://docker-machine-ip/flask-api/users
 - NodeJS API REST end-point:
     - http://docker-machine-ip/flask-api/user
     - http://docker-machine-ip/flask-api/users
