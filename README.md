@@ -42,6 +42,6 @@
     
 Reminder: "docker-machine-ip" above refers to the IP returned from the terminal on this command:
 
-    `docker-machine ip`
+    docker-machine ip
 
 Cheers!
