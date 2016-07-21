@@ -1,0 +1,49 @@
+flask-api:
+  restart: on-failure:10
+  build: ./flask-api
+  expose:
+    - "5000"
+  env_file: .env
+  links:
+    - mongo-db
+  command: uwsgi --ini /flask-api/uwsgi.ini
+  container_name: flask-api
+
+node-api:
+  restart: on-failure:10
+  build: ./node-api
+  expose:
+    - "3000"
+  env_file: .env
+  links:
+    - mongo-db
+  command: node /node-api/node-api.js
+  container_name: node-api
+
+nginx:
+  restart: always
+  build: ./nginx/
+  ports:
+    - "80:80"
+  links:
+    # nginx has to link to flask-api (not vice-versa) so that nginx/sites-enabled/default has access to flask-api by service name (acts as host dns).
+    #  each docker container has a seperate ip address below the docker-machine host, so you have to link containers to correctly pass to upstream flask port
+    - flask-api:flask-api
+    - node-api:node-api
+  container_name: nginx
+
+
+mongo-data:
+  image: mongo:latest
+  volumes:
+    - /data/db
+  command: "true"
+  container_name: mongo-data
+
+mongo-db:
+  image: mongo:latest
+  volumes_from:
+    - mongo-data
+  ports:
+    - "27017:27017"
+  container_name: mongo-db

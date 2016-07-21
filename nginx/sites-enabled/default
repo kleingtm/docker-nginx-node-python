@@ -1,0 +1,38 @@
+
+upstream upstream-node{
+    server node-api:3000; # pivot on linked docker container name
+}
+
+server {
+
+    listen 80;
+    #server_name 192.168.90.100;
+    charset utf-8;
+
+    #root /app;
+    index index.html index.htm index.php;
+
+    location ^~/flask-api{
+        # pivoting on the docker container name for host (cool you can do that)
+        uwsgi_pass flask-api:5000;
+        include uwsgi_params;
+        break;
+    }
+
+    location ^~/node-api{
+        # pivoting on the docker container name for host (cool you can do that)
+        #proxy_pass http://nodejs.localhost;
+        #proxy_http_version 1.1;
+        #proxy_set_header Upgrade $http_upgrade;
+        #proxy_set_header Connection 'upgrade';
+        #proxy_set_header Host $host;
+        #proxy_cache_bypass $http_upgrade;
+
+
+        proxy_pass http://upstream-node; # call to upstream block at top of this file
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        break;
+    }
+}
