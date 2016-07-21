@@ -27,14 +27,20 @@
     
 **Verify proper docker build from the browser:**
 - Retrieve docker-machine ip address from the terminal/cmd prompt:
+
     `docker-machine ip`
+    
 - Static assets served from Nginx:
-    - http://<docker-machine ip>/
+    - http://docker-machine-ip/
 - Flask API REST end-point:
-    - http://<docker-machine ip>/flask-api/user
-    - http://<docker-machine ip>/flask-api/users
+    - http://docker-machine-ip/flask-api/user
+    - http://docker-machine-ip>/flask-api/users
 - NodeJS API REST end-point:
-    - http://<docker-machine ip>/flask-api/user
-    - http://<docker-machine ip>/flask-api/users
+    - http://docker-machine-ip/flask-api/user
+    - http://docker-machine-ip/flask-api/users
+    
+Reminder: "docker-machine-ip" above refers to the IP returned from the terminal on this command:
+
+    `docker-machine ip`
 
 Cheers!
