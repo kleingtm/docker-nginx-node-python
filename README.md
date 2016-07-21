@@ -2,7 +2,7 @@
 
 **Goal:**
 
-The goal of this repository is to have a quickly sharable, deployable docker setup for Python and Node web services adhering to best-practices. Nginx serves the static content and reverse proxies to Python/Flask and NodeJS/Express web service apis. Since Nginx, Python, and NodeJS are in separate (linked) docker containers, each service has a separate IP from the host docker-machine. Due to this, nginx reverse proxies over specific TCP ports between containers, as opposed to using a unix socket implementation. A benefit of this linked container implementation is that proxies do not go through the docker-machine host.
+The goal of this repository is to have a quickly sharable, deployable docker setup for Python and Node web services adhering to best-practices. Nginx serves the static content and provides a reverse proxy to Python/Flask and NodeJS/Express web service apis. Since Nginx, Python, and NodeJS are in separate (linked) docker containers, each service has a separate IP from the host docker-machine. Due to this, nginx reverse-proxies requests over specific TCP ports between containers, as opposed to using a unix socket implementation. A benefit of this linked container implementation is a smaller footprint than a docker server image, and that proxies do not go through the externally-exposed docker-machine host.
 
 
 **Stack:**
