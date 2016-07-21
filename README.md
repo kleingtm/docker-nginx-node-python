@@ -14,10 +14,15 @@
 **Getting up and running:**
 - Install Docker Toolbox - https://docs.docker.com/engine/getstarted/step_one/
 - Run the following from a terminal within this project root:
+
     `docker-machine rm default`
+    
     `docker-machine create -d virtualbox --virtualbox-hostonly-cidr "192.168.90.1/24" default`
+    
     `eval "$(docker-machine env default)"`
+    
     `docker-compose build --force-rm`
+    
     `docker-compose up`
     
 **Verify proper docker build from the browser:**
