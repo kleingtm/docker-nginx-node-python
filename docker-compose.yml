@@ -6,7 +6,7 @@ flask-api:
   env_file: .env
   links:
     - mongo-db
-  command: uwsgi --ini /flask-api/uwsgi.ini
+  command: uwsgi --ini /flask-api/uwsgi.ini --async 12 --ugreen
   container_name: flask-api
 
 node-api:
@@ -17,7 +17,8 @@ node-api:
   env_file: .env
   links:
     - mongo-db
-  command: node /node-api/node-api.js
+  command: pm2 start /node-api/node-api.json --no-daemon
+  #command: nodemon --debug /node-api/node-api.js --watch /node-api
   container_name: node-api
 
 nginx:
