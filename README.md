@@ -22,7 +22,7 @@ The goal of this repository is to have a quickly sharable, deployable docker set
 
     `docker-machine rm default`
     
-    `docker-machine create -d virtualbox --virtualbox-hostonly-cidr "192.168.90.1/24" default`
+    `docker-machine create -d virtualbox --virtualbox-hostonly-cidr "192.168.90.1/24" --virtualbox-cpu-count -1 default`
     
     `eval "$(docker-machine env default)"`
     
