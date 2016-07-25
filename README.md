@@ -42,8 +42,8 @@ The goal of this repository is to have a quickly sharable, deployable docker set
     - http://docker-machine-ip/flask-api/user
     - http://docker-machine-ip/flask-api/users
 - NodeJS API REST end-point:
-    - http://docker-machine-ip/flask-api/user
-    - http://docker-machine-ip/flask-api/users
+    - http://docker-machine-ip/node-api/user
+    - http://docker-machine-ip/node-api/users
     
 Reminder: "docker-machine-ip" above refers to the host IP of the docker-machine returned from the terminal on this command:
 
